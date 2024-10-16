@@ -1,0 +1,26 @@
+-- Drop the table
+DROP TABLE employee;
+
+-- Create the employee table
+CREATE TABLE employee(id INT, name STRING, dept STRING, yoj INT, salary INT)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+TBLPROPERTIES("skip.header.line.count"="1");
+
+-- Load data into the table
+LOAD DATA LOCAL INPATH '/root/EmpData.csv' INTO TABLE employee;
+
+-- Export result into loacl folder
+INSERT OVERWRITE DIRECTORY 'hdfs:///user/lokesh/HiveResult1'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT id, name FROM employee;
+
+-- Export result2
+INSERT OVERWRITE LOCAL DIRECTORY '/root/HiveResult2'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT * FROM employee WHERE salary > 30000 ;
+
+-- Export result3
+INSERT OVERWRITE LOCAL DIRECTORY '/root/HiveResult3'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT COUNT(*) FROM employee;

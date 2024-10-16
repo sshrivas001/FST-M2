@@ -1,0 +1,20 @@
+-- Drop the old tables
+DROP TABLE word_counts;
+DROP TABLE files;
+
+-- Create the input table
+CREATE TABLE files(line STRING);
+
+-- Load data into the file
+LOAD DATA LOCAL INPATH '/root/input.txt' INTO TABLE files;
+
+-- Perform Mapreduce
+
+CREATE TABLE word_counts AS
+SELECT word, COUNT(word) AS totalCount FROM
+(SELECT explode(split(line, ' ')) AS word FROM files) w
+GROUP BY word
+ORDER BY totalCount;
+
+-- Print output
+SELECT * FROM word_counts;
