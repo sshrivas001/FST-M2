@@ -1,5 +1,5 @@
 -- Load data from HDFS
-inputDialogues4 = LOAD 'hdfs:///user/padmini/inputs/episodeIV_dialogues.txt' USING PigStorage('\t') AS (name:chararray, lines:chararray);
+inputDialogues4 = LOAD 'hdfs:///user/sshrivas/inputs/episodeIV_dialogues.txt' USING PigStorage('\t') AS (name:chararray, lines:chararray);
 inputDialogues5 = LOAD 'hdfs:///user/padmini/inputs/episodeV_dialogues.txt' USING PigStorage('\t') AS (name:chararray, lines:chararray);
 inputDialogues6 = LOAD 'hdfs:///user/padmini/inputs/episodeVI_dialogues.txt' USING PigStorage('\t') AS (name:chararray, lines:chararray);
 
