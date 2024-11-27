@@ -8,12 +8,12 @@ services:
         build: 
           context: ./
           dockerfile: Dockerfile
-        image: 'docker.io/poulami54/simpleblogapi'
+        image: 'docker.io/sshrivas/simpleblogapi'
         environment:
             - POSTGRES_HOST=postgres
             - POSTGRES_PORT=5432
-            - POSTGRES_USERNAME=postgres
-            - POSTGRES_PASSWORD=postgres_password
+            - POSTGRES_USERNAME=sshrivas
+            - POSTGRES_PASSWORD=sshrivas123
             - POSTGRES_DB=simple_blog_api
             
         ports:
